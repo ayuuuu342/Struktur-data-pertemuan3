@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+const int JUMLAH_BARIS = 3;
+const int JUMLAH_KOLOM = 3;
+
+void TampilkanMatriks(const int Matriks[JUMLAH_BARIS][JUMLAH_KOLOM], const string& Nama) {
+    cout << "Isi Matriks " << Nama << ":" << endl;
+    for (int i = 0; i < JUMLAH_BARIS; ++i) {
+        for (int j = 0; j < JUMLAH_KOLOM; ++j) {
+            cout << Matriks[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+void TukarElemen(int MatriksA[JUMLAH_BARIS][JUMLAH_KOLOM], int MatriksB[JUMLAH_BARIS][JUMLAH_KOLOM], int Baris, int Kolom) {
+    int temp = MatriksA[Baris][Kolom];
+    MatriksA[Baris][Kolom] = MatriksB[Baris][Kolom];
+    MatriksB[Baris][Kolom] = temp;
+cout << "   (Asik berhasil! Elemen pada Baris ke-" << Baris << " Kolom ke-" << Kolom << " ditukar.)" << endl;
+}
+void TukarNilaiPointer(int *PointerSatu, int *PointerDua) {
+    int temp = *PointerSatu;
+    *PointerSatu = *PointerDua;
+    *PointerDua = temp;
+}
+
+int main() {
+    int Matriks_A[JUMLAH_BARIS][JUMLAH_KOLOM] = {{5, 3, 4}, {8, 2, 9}, {7, 1, 6}};
+    int Matriks_B[JUMLAH_BARIS][JUMLAH_KOLOM] = {{70, 30, 60}, {20, 50, 90}, {40, 80, 10}};
+
+    int Nilai_X = 199;
+    int Nilai_Y = 123;
+    int *Ptr_Satu = &Nilai_X; 
+    int *Ptr_Dua = &Nilai_Y;   
+
+    cout << "=================== sebelum di tukar ===================" << endl;
+    TampilkanMatriks(Matriks_A, "A");
+    cout << endl;
+    TampilkanMatriks(Matriks_B, "B");
+    cout << endl;
+
+    cout << "Nilai Variabel X: " << Nilai_X << " (Ditunjuk Ptr 1)" << endl;
+    cout << "Nilai Variabel Y: " << Nilai_Y << " (Ditunjuk Ptr 2)" << endl;
+
+    cout << "\n=================== setelah di tukar ===================" << endl;
+
+    TampilkanMatriks(Matriks_A, "A");
+    cout << endl;
+    TampilkanMatriks(Matriks_B, "B");
+    cout << endl;
+
+    cout << "Nilai Variabel X sekarang: " << Nilai_X << endl;
+    cout << "Nilai Variabel Y sekarang: " << Nilai_Y << endl;
+    
+    return 0;
+}
